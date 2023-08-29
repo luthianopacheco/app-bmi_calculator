@@ -29,23 +29,28 @@ class _BMIListPageState extends State<BMIListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your BMI List'),
-        centerTitle: true,
-        actions: const [BMIInfoIcon()],
-      ),
-      drawer: const ProfileDrawerPage(),
-      body: Obx(
-        () {
-          return widget._controller.isLoading.value
-              ? const Center(child: CircularProgressIndicator())
-              : widget._controller.bmiList.isEmpty
-                  ? const Center(
-                      child: Text("No data found!"),
-                    )
-                  : _buildListView();
-        },
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Your BMI List'),
+            centerTitle: true,
+            actions: const [BMIInfoIcon()],
+          ),
+          drawer: const ProfileDrawerPage(),
+          body: Obx(
+            () {
+              return widget._controller.isLoading.value
+                  ? const Center(child: CircularProgressIndicator())
+                  : widget._controller.bmiList.isEmpty
+                      ? const Center(
+                          child: Text("No data found!"),
+                        )
+                      : _buildListView();
+            },
+          ),
+        ),
       ),
     );
   }
@@ -72,27 +77,32 @@ class _BMIListPageState extends State<BMIListPage> {
               onDismissed: (direction) {
                 widget._controller.deleteData(index);
               },
-              child: ListTile(
-                leading: Text(
-                  '${item.getBmiCalculation().toStringAsFixed(2)}                     =',
-                  style: const TextStyle(fontSize: 15),
-                ),
-                title: Text(
-                  item.getBmiStatus(),
-                  textAlign: TextAlign.center,
-                ),
-                titleAlignment: ListTileTitleAlignment.center,
-                trailing: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: bmiFuntions.bmiStatusColor(item.getBmiStatusColor()),
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Text(
+                      '${item.getBmiCalculation().toStringAsFixed(2)}                     =',
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    title: Text(
+                      item.getBmiStatus(),
+                      textAlign: TextAlign.center,
+                    ),
+                    titleAlignment: ListTileTitleAlignment.center,
+                    trailing: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: bmiFuntions
+                            .bmiStatusColor(item.getBmiStatusColor()),
+                      ),
+                      height: 20,
+                      width: 20,
+                    ),
                   ),
-                  height: 20,
-                  width: 20,
-                ),
+                  const Divider(thickness: 2, height: 0)
+                ],
               ),
             ),
-            const Divider(thickness: 2, height: 0)
           ],
         );
       },

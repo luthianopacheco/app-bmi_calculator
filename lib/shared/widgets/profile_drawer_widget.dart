@@ -54,7 +54,33 @@ class _ProfileDrawerPageState extends State<ProfileDrawerPage> {
           Expanded(child: Container()),
           const Divider(thickness: 2, height: 0),
           InkWell(
-              onTap: () => Get.offAndToNamed('loginPage'),
+              onTap: () => showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        icon: const Icon(Icons.exit_to_app, color: Colors.red),
+                        title: const Text('You are exiting your account.'),
+                        content: const Text('Are you sure you want to exit?'),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                'Cancel',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                          TextButton(
+                            onPressed: () {
+                              Get.offAndToNamed('loginPage');
+                            },
+                            child: const Text('Confirm',
+                                style: TextStyle(color: Colors.red)),
+                          )
+                        ],
+                      );
+                    },
+                  ),
               child: _buildTextButton(
                   iconType: Icons.exit_to_app,
                   iconTypeColor: Colors.red,

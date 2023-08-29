@@ -2,7 +2,7 @@ import 'package:bmi_calculator/pages/preferences_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bmi_calculator/controller/bmi_controller.dart';
-import 'package:bmi_calculator/pages/bmi_list.dart';
+import 'package:bmi_calculator/pages/bmi_list_page.dart';
 import 'package:bmi_calculator/pages/home_page.dart';
 
 class NavigationPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bmi_calculator/models/bmi_model.dart';
-import 'package:bmi_calculator/models/bmi_repository.dart';
+import 'package:bmi_calculator/models/repository/bmi_repository.dart';
 
 class BMIController extends GetxController {
   final BMIRepository _repository;

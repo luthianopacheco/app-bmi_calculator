@@ -16,26 +16,29 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("BMI Calculator"),
-          centerTitle: true,
-          actions: const [BMIInfoIcon()],
-        ),
-        drawer: const ProfileDrawerPage(),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-          child: ListView(
-            children: [
-              _buildValueCard('height', 'm', 1.10, 2.20, true),
-              const SizedBox(height: 20),
-              _buildValueCard('weight', 'kg', 20, 250, false),
-              const SizedBox(height: 20),
-              Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 75),
-                  child: _buildCalculateButton(context))
-            ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("BMI Calculator"),
+            centerTitle: true,
+            actions: const [BMIInfoIcon()],
+          ),
+          drawer: const ProfileDrawerPage(),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
+            child: ListView(
+              children: [
+                _buildValueCard('height', 'm', 1.10, 2.20, true),
+                const SizedBox(height: 20),
+                _buildValueCard('weight', 'kg', 20, 250, false),
+                const SizedBox(height: 20),
+                Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 75),
+                    child: _buildCalculateButton(context))
+              ],
+            ),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/models/bmi_model.dart';
+import 'package:flutter/material.dart';
 
 class BMIRepository {
   final List<BMIModel> _bmiList = [];
@@ -6,12 +7,20 @@ class BMIRepository {
   Future addBMI(
       String statusText, double calculation, StatusColor statusColor) async {
     await Future.delayed(const Duration(seconds: 1));
-    _bmiList.add(BMIModel(statusText, calculation, statusColor));
+    try {
+      _bmiList.add(BMIModel(statusText, calculation, statusColor));
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   Future deleteBMI(int index) async {
     await Future.delayed(const Duration(seconds: 1));
-    _bmiList.removeAt(index);
+    try {
+      _bmiList.removeAt(index);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   Future<List<BMIModel>> getBMI() async {

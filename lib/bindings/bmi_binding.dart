@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:bmi_calculator/controller/bmi_controller.dart';
 
-import '../models/bmi_repository.dart';
+import '../models/repository/bmi_repository.dart';
 
 class BMIBinding implements Bindings {
   @override

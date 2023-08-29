@@ -2,9 +2,9 @@ import 'package:bmi_calculator/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bmi_calculator/controller/bmi_controller.dart';
-import 'package:bmi_calculator/pages/bmi_list.dart';
+import 'package:bmi_calculator/pages/bmi_list_page.dart';
 import 'package:bmi_calculator/pages/home_page.dart';
-import 'package:bmi_calculator/pages/navigation_bar_widget.dart';
+import 'package:bmi_calculator/shared/widgets/navigation_bar_widget.dart';
 
 import 'bindings/bmi_binding.dart';
 import 'pages/result_page.dart';
